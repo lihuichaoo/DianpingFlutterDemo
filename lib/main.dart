@@ -56,6 +56,13 @@ class MyApp extends StatelessWidget {
                 padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
                 child: Row(
                   children: <Widget>[
+                    Container(
+                      padding: const EdgeInsets.fromLTRB(15, 0, 10, 0),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(24),
+                        child: Image.asset('assets/ava2.png'),
+                      )
+                    ),
                     Column(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       crossAxisAlignment: CrossAxisAlignment.start,
