@@ -49,9 +49,50 @@ class MyApp extends StatelessWidget {
                 ],
               ),
             ),
-          )
+          ),
+          SliverList(
+            delegate: SliverChildListDelegate(<Widget>[
+              Container(
+                padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
+                child: Row(
+                  children: <Widget>[
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        Row(
+                          children: <Widget>[
+                            Text(
+                              'InfoQ',
+                              style: TextStyle(
+                                color: Colors.black54,
+                                fontSize: 20,
+                              ),
+                            ),
+                            Container(
+                              height: 18,
+                              padding: const EdgeInsets.fromLTRB(8, 0, 0, 0),
+                              child: Image.asset('assets/lv1.png'),
+                            ),
+                          ],
+                        ),
+                        SizedBox(height: 6,), // for spacing
+                        Text(
+                          '2月28日 18:45',
+                          style: TextStyle(
+                            color: Colors.black54,
+                            fontSize: 16,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ]),
+          ),
         ],
-      )
+      ),
     );
   }
 }
