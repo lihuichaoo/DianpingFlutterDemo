@@ -58,9 +58,22 @@ class MyApp extends StatelessWidget {
                   children: <Widget>[
                     Container(
                       padding: const EdgeInsets.fromLTRB(15, 0, 10, 0),
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(24),
-                        child: Image.asset('assets/ava2.png'),
+                      child: Stack(
+                        children: <Widget>[
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(24),
+                            child: Image.asset('assets/ava2.png'),
+                          ),
+                          Positioned(
+                            left: 25,
+                            top: 25,
+                            child: Container(
+                              width: 25,
+                              height: 25,
+                              child: Image.asset('assets/v.png'),
+                            ),
+                          ),
+                        ],
                       )
                     ),
                     Column(
@@ -73,11 +86,11 @@ class MyApp extends StatelessWidget {
                               'InfoQ',
                               style: TextStyle(
                                 color: Colors.black54,
-                                fontSize: 20,
+                                fontSize: 18,
                               ),
                             ),
                             Container(
-                              height: 18,
+                              height: 16,
                               padding: const EdgeInsets.fromLTRB(8, 0, 0, 0),
                               child: Image.asset('assets/lv1.png'),
                             ),
@@ -88,7 +101,7 @@ class MyApp extends StatelessWidget {
                           '2月28日 18:45',
                           style: TextStyle(
                             color: Colors.black54,
-                            fontSize: 16,
+                            fontSize: 14,
                           ),
                         ),
                       ],
