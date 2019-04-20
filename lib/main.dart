@@ -20,6 +20,10 @@ class MyApp extends StatelessWidget {
     print('more pressed');
   }
 
+  void _followPressed() {
+    print('follow pressed');
+  }
+
   Widget buildHomePage(String title) {
     return Scaffold(
       backgroundColor: Colors.white,
@@ -57,7 +61,7 @@ class MyApp extends StatelessWidget {
                 child: Row(
                   children: <Widget>[
                     Container(
-                      padding: const EdgeInsets.fromLTRB(15, 0, 10, 0),
+                      padding: const EdgeInsets.fromLTRB(15, 0, 14, 0),
                       child: Stack(
                         children: <Widget>[
                           ClipRRect(
@@ -105,6 +109,28 @@ class MyApp extends StatelessWidget {
                           ),
                         ),
                       ],
+                    ),
+                    Expanded(
+                      child: Align(
+                        alignment: Alignment.centerRight,
+                        child: Container(
+                          padding: const EdgeInsets.fromLTRB(0, 0, 10, 0),
+                          width: 80,
+                          height: 34,
+                          child: CupertinoButton(
+                              padding: const EdgeInsets.all(0),
+                              color: Colors.deepOrangeAccent,
+                              borderRadius: BorderRadius.circular(20),
+                              child: Text(
+                                  '✚ 关注',
+                                style: TextStyle(
+                                  fontSize: 16,
+                                ),
+                              ),
+                              onPressed: _followPressed,
+                          ),
+                        ),
+                      ),
                     ),
                   ],
                 ),
