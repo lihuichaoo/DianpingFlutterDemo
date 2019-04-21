@@ -316,42 +316,63 @@ class MyApp extends StatelessWidget {
       ],
     );
 
-    final distanceRow = Row(
-      children: <Widget>[
-        Text(
-            '昌平区',
-            style: TextStyle(
-              color: Colors.black26,
-              fontSize: 18,
-            )),
-        SizedBox(width: 5,),
-        Text(
-            '回龙观',
-            style: TextStyle(
-              color: Colors.black26,
-              fontSize: 18,
-            )),
-        SizedBox(width: 5,),
-        Text(
-            '焖锅',
-            style: TextStyle(
-              color: Colors.black26,
-              fontSize: 18,
-            )),
-        SizedBox(width: 10,),
-        Text(
-            '1.1km',
-            style: TextStyle(
-              color: Colors.black26,
-              fontSize: 18,
-            )),
-      ],
+    final distanceRow = Padding(
+        padding: const EdgeInsets.fromLTRB(0, 5, 0, 10),
+        child: Row(
+          children: <Widget>[
+            Text(
+                '昌平区',
+                style: TextStyle(
+                  color: Colors.black54,
+                  fontSize: 18,
+                )),
+            SizedBox(width: 5,),
+            Text(
+                '回龙观',
+                style: TextStyle(
+                  color: Colors.black54,
+                  fontSize: 18,
+                )),
+            SizedBox(width: 5,),
+            Text(
+                '焖锅',
+                style: TextStyle(
+                  color: Colors.black54,
+                  fontSize: 18,
+                )),
+            SizedBox(width: 10,),
+            Text(
+                '1.1km',
+                style: TextStyle(
+                  color: Colors.black54,
+                  fontSize: 18,
+                )),
+          ],
+        ));
+
+    final groupBuySection = Container(
+      padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
+      child: Row(
+        children: <Widget>[
+          Container(
+            padding: const EdgeInsets.fromLTRB(0, 0, 6, 0),
+            height: 20,
+            child: Image.asset('assets/ceu.png'),
+          ),
+          Text(
+              '177元 清江鱼焖锅套餐',
+              style: TextStyle(
+                color: Colors.black54,
+                fontSize: 18,
+              )),
+        ],
+      ),
     );
 
     final poiCard = Card(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15.0)),
       elevation: 2,
-      child: Padding(
+      child: Container(
         padding: const EdgeInsets.fromLTRB(15, 15, 15, 15),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -362,14 +383,18 @@ class MyApp extends StatelessWidget {
               padding: const EdgeInsets.fromLTRB(0, 0, 10, 0),
               child: Image.asset('assets/poi.png'),
             ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                titleRow,
-                scoreRow,
-                distanceRow,
-              ],
-            )
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  titleRow,
+                  scoreRow,
+                  distanceRow,
+                  Divider(height: 1, color: Colors.black38,),
+                  groupBuySection,
+                ],
+              ),
+            ),
           ],
         ),
       ),
