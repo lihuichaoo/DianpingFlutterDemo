@@ -57,7 +57,7 @@ class MyApp extends StatelessWidget {
       ),
     );
 
-    final avar = Container(
+    final avatar = Container(
         padding: const EdgeInsets.fromLTRB(0, 0, 14, 0),
         child: Stack(
           children: <Widget>[
@@ -154,7 +154,7 @@ class MyApp extends StatelessWidget {
           )),
     );
 
-    final suggestion = RichText(
+    final suggestionSection = RichText(
       textAlign: TextAlign.left,
       textDirection: TextDirection.ltr,
       text: TextSpan(
@@ -175,6 +175,62 @@ class MyApp extends StatelessWidget {
       ),
     );
 
+    Widget _buildScore(double score) {
+      if(score < 0) score = 0;
+      if(score > 5) score = 5;
+      int countOfFullStar = score.floor();
+      bool halfStar = (score - countOfFullStar) >= 0.5;
+
+      List<Widget> children = List.generate(5, (int index) {
+        if (index < countOfFullStar) {
+          if (index == 0) {
+            return Image.asset('assets/fw2.png');
+          } else {
+            return Container(
+              padding: const EdgeInsets.fromLTRB(2, 0, 0, 0),
+              child: Image.asset('assets/fw2.png'),
+            );
+          }
+        } else if (index == countOfFullStar && halfStar) {
+          return Container(
+            padding: const EdgeInsets.fromLTRB(2, 0, 0, 0),
+            child: Image.asset('assets/fw1.png'),
+          );
+        } else {
+          return Container(
+            padding: const EdgeInsets.fromLTRB(2, 0, 0, 0),
+            child: Image.asset('assets/fw0.png'),
+          );
+        }
+      });
+
+      return Row(children: children);
+    }
+
+    final scoreSection = Padding(
+        padding: const EdgeInsets.fromLTRB(0, 20, 0, 0),
+        child: Row(
+          children: <Widget>[
+            Text('打分',
+              style: TextStyle(
+                color: Colors.black87,
+                fontSize: 19,
+              ),
+            ),
+            Container(
+              height: 18,
+              padding: const EdgeInsets.fromLTRB(12, 0, 30, 0),
+              child: _buildScore(3.3),
+              ),
+            Text('￥90/人',
+              style: TextStyle(
+                color: Colors.black87,
+                fontSize: 19,
+              ),
+            ),
+          ],
+        ));
+
     return Scaffold(
       backgroundColor: Colors.white.withOpacity(0.98),
       body: CustomScrollView(
@@ -189,7 +245,7 @@ class MyApp extends StatelessWidget {
                   children: <Widget>[
                     Row(
                       children: <Widget>[
-                        avar,
+                        avatar,
                         nickName,
                         followButton,
                       ],
@@ -200,7 +256,8 @@ class MyApp extends StatelessWidget {
                         commentSection,
                       ],
                     ),
-                    suggestion,
+                    suggestionSection,
+                    scoreSection,
                   ],
                 )
               ),
