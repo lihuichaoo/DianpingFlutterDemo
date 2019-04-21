@@ -299,10 +299,10 @@ class MyApp extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.end,
           children: <Widget>[
             Container(
-              margin: const EdgeInsets.fromLTRB(15, 0, 0, 0),
-              width: 25,
-              height: 25,
-              child: Image.asset('assets/gfl.png'),
+              margin: const EdgeInsets.fromLTRB(15, 0, 2, 0),
+              width: 18,
+              height: 18,
+              child: Image.asset('assets/g0n.png'),
             ),
             Text(
               '3429',
@@ -400,6 +400,56 @@ class MyApp extends StatelessWidget {
       ),
     );
 
+    Widget _buildCircleAvatar(String path) {
+      return Padding(
+        padding: const EdgeInsets.fromLTRB(15, 0, 0, 0),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(24),
+          child: Image.asset(path),
+        ),
+      );
+    }
+
+    final likeSection =  Padding(
+        padding: const EdgeInsets.all(15),
+        child: Row(
+          children: <Widget>[
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Container(
+                  margin: const EdgeInsets.fromLTRB(0, 0, 0, 2),
+                  width: 30,
+                  child: Image.asset('assets/dzh.png'),
+                ),
+                Text(
+                    '45',
+                    style: TextStyle(
+                      color: Colors.black54,
+                      fontSize: 14,
+                    )),
+              ],
+            ),
+            _buildCircleAvatar('assets/ava5.png'),
+            _buildCircleAvatar('assets/ava2.png'),
+            _buildCircleAvatar('assets/ava3.png'),
+            _buildCircleAvatar('assets/ava4.png'),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(15, 0, 0, 0),
+              child: CircleAvatar(
+                radius: 24,
+                backgroundColor: Colors.black12,
+                child: Text(
+                    '更多',
+                    style: TextStyle(
+                      color: Colors.black54,
+                      fontSize: 14,
+                    )),
+              ),
+            ),
+          ],
+        ));
+
     return Scaffold(
       backgroundColor: Colors.white.withOpacity(0.98),
       body: CustomScrollView(
@@ -431,6 +481,20 @@ class MyApp extends StatelessWidget {
                     detailScoreRow,
                     SizedBox(width: 0, height: 10,),
                     poiCard,
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(0, 20, 0, 0),
+                      child: Text(
+                          '浏览 3.5万',
+                          style: TextStyle(
+                            color: Colors.black54,
+                            fontSize: 20,
+                          )),
+                    ),
+                    SizedBox(width: 0, height: 20,),
+                    Divider(height: 1, color: Colors.black38),
+                    likeSection,
+                    Divider(height: 1, color: Colors.black38),
+                    SizedBox(width: 0, height: 20,),
                   ],
                 )
               ),
