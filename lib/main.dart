@@ -450,6 +450,18 @@ class MyApp extends StatelessWidget {
           ],
         ));
 
+    Widget _buildIconButton(String path) {
+      return GestureDetector(
+        child: Container(
+          padding: EdgeInsets.fromLTRB(0, 0, 10, 0),
+          width: 40,
+          height: 40,
+          child: Image.asset(path),
+        ),
+        onTapUp: _morePressed,
+      );
+    }
+
     return Scaffold(
       backgroundColor: Colors.white.withOpacity(0.98),
       body: CustomScrollView(
@@ -501,6 +513,21 @@ class MyApp extends StatelessWidget {
             ]),
           ),
         ],
+      ),
+      bottomNavigationBar: BottomAppBar(
+        child: Container(
+          height: 44,
+          padding: const EdgeInsets.fromLTRB(0, 15, 0, 0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+              _buildIconButton('assets/dzh.png'),
+              _buildIconButton('assets/dzg.png'),
+              _buildIconButton('assets/dze.png'),
+              _buildIconButton('assets/dzj.png'),
+            ],
+          ),
+        ),
       ),
     );
   }
