@@ -231,6 +231,33 @@ class MyApp extends StatelessWidget {
           ],
         ));
 
+    Widget _buildIconText(String title) {
+      return Row(
+        children: <Widget>[
+          SizedBox(
+            width: 30,
+            height: 30,
+            child: Image.asset('assets/fa.png'),
+          ),
+          Text(
+            title,
+            style: TextStyle(
+              fontSize: 16,
+              color: Colors.black,
+            ),),
+        ],
+      );
+    }
+
+    final detailScoreRow = Row(
+      children: <Widget>[
+        _buildIconText('口味超棒'),
+        _buildIconText('环境超棒'),
+        _buildIconText('服务超棒'),
+        _buildIconText('食材超棒'),
+      ],
+    );
+
     return Scaffold(
       backgroundColor: Colors.white.withOpacity(0.98),
       body: CustomScrollView(
@@ -258,6 +285,7 @@ class MyApp extends StatelessWidget {
                     ),
                     suggestionSection,
                     scoreSection,
+                    detailScoreRow,
                   ],
                 )
               ),
