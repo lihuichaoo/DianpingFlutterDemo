@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
 
   Widget buildHomePage(String title) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.white.withOpacity(0.98),
       body: CustomScrollView(
         slivers: <Widget>[
           SliverAppBar(
@@ -87,7 +87,7 @@ class MyApp extends StatelessWidget {
                         Row(
                           children: <Widget>[
                             Text(
-                              'InfoQ',
+                              'Midnight',
                               style: TextStyle(
                                 color: Colors.black54,
                                 fontSize: 18,
@@ -134,6 +134,30 @@ class MyApp extends StatelessWidget {
                     ),
                   ],
                 ),
+              ),
+              Stack(
+                children: <Widget>[
+                  Positioned(
+                    right: 10,
+                    child: Container(
+                      width: 55,
+                      height: 55,
+                      child: Image.asset('assets/efi.png'),
+                    ),
+                  ),
+                  Container(
+                    padding: const EdgeInsets.fromLTRB(15, 25, 15, 15),
+                    child: Text('已经是第二次来了，在回龙观华联的三楼，电梯上来就能看到，很好找。'
+                        '上次是在砍价网站上买的，很便宜，这次直接来了，可以团购代金券，'
+                        '相当于打了九二折，还比较合适。味道相当好，里面有好多配菜，可以不用'
+                        '单点配菜。以后还会来的。',
+                        style: TextStyle(
+                          fontSize: 19,
+                          fontWeight: FontWeight.w300,
+                          color: Colors.black,
+                        )),
+                  ),
+                ],
               ),
             ]),
           ),
