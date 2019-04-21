@@ -233,10 +233,11 @@ class MyApp extends StatelessWidget {
 
     Widget _buildIconText(String title) {
       return Row(
+        mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
           SizedBox(
-            width: 30,
-            height: 30,
+            width: 32,
+            height: 32,
             child: Image.asset('assets/fa.png'),
           ),
           Text(
@@ -258,6 +259,122 @@ class MyApp extends StatelessWidget {
       ],
     );
 
+    final titleRow = Row(
+      children: <Widget>[
+        Text(
+          '一品焖锅(回龙观店)',
+          style: TextStyle(
+            fontSize: 24,
+            fontWeight: FontWeight.w600,
+            color: Colors.black,
+          ),
+        ),
+        Container(
+          padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
+          width: 30,
+          height: 30,
+          child: Image.asset('assets/cm3.png'),
+        ),
+      ],
+    );
+
+    final scoreRow = Row(
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: <Widget>[
+        SizedBox(
+          height: 15,
+          child: _buildScore(4.5),
+        ),
+        Padding(
+          padding: const EdgeInsets.fromLTRB(15, 0, 0, 0),
+          child: Text(
+            '￥96/人',
+            style: TextStyle(
+              color: Colors.black26,
+              fontSize: 18,
+            ),
+          ),
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: <Widget>[
+            Container(
+              margin: const EdgeInsets.fromLTRB(15, 0, 0, 0),
+              width: 25,
+              height: 25,
+              child: Image.asset('assets/gfl.png'),
+            ),
+            Text(
+              '3429',
+              style: TextStyle(
+                color: Colors.black26,
+                fontSize: 18,
+              ),
+            ),
+          ],
+        ),
+      ],
+    );
+
+    final distanceRow = Row(
+      children: <Widget>[
+        Text(
+            '昌平区',
+            style: TextStyle(
+              color: Colors.black26,
+              fontSize: 18,
+            )),
+        SizedBox(width: 5,),
+        Text(
+            '回龙观',
+            style: TextStyle(
+              color: Colors.black26,
+              fontSize: 18,
+            )),
+        SizedBox(width: 5,),
+        Text(
+            '焖锅',
+            style: TextStyle(
+              color: Colors.black26,
+              fontSize: 18,
+            )),
+        SizedBox(width: 10,),
+        Text(
+            '1.1km',
+            style: TextStyle(
+              color: Colors.black26,
+              fontSize: 18,
+            )),
+      ],
+    );
+
+    final poiCard = Card(
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15.0)),
+      elevation: 2,
+      child: Padding(
+        padding: const EdgeInsets.fromLTRB(15, 15, 15, 15),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Container(
+              width: 90,
+              height: 90,
+              padding: const EdgeInsets.fromLTRB(0, 0, 10, 0),
+              child: Image.asset('assets/poi.png'),
+            ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                titleRow,
+                scoreRow,
+                distanceRow,
+              ],
+            )
+          ],
+        ),
+      ),
+    );
+
     return Scaffold(
       backgroundColor: Colors.white.withOpacity(0.98),
       body: CustomScrollView(
@@ -266,7 +383,7 @@ class MyApp extends StatelessWidget {
           SliverList(
             delegate: SliverChildListDelegate(<Widget>[
               Container(
-                padding: const EdgeInsets.fromLTRB(15, 10, 0, 0),
+                padding: const EdgeInsets.fromLTRB(15, 10, 15, 0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
@@ -285,7 +402,10 @@ class MyApp extends StatelessWidget {
                     ),
                     suggestionSection,
                     scoreSection,
+                    SizedBox(width: 0, height: 2,),
                     detailScoreRow,
+                    SizedBox(width: 0, height: 10,),
+                    poiCard,
                   ],
                 )
               ),
