@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart' show debugPaintSizeEnabled;
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/gestures.dart';
 
 void main() {
   debugPaintSizeEnabled = false; // Set to true for visual layout
@@ -22,6 +23,10 @@ class MyApp extends StatelessWidget {
 
   void _followPressed() {
     print('follow pressed');
+  }
+
+  void _suggestionPressed() {
+    print('suggestion pressed');
   }
 
   Widget buildHomePage(String title) {
@@ -53,7 +58,7 @@ class MyApp extends StatelessWidget {
     );
 
     final avar = Container(
-        padding: const EdgeInsets.fromLTRB(15, 0, 14, 0),
+        padding: const EdgeInsets.fromLTRB(0, 0, 14, 0),
         child: Stack(
           children: <Widget>[
             ClipRRect(
@@ -137,7 +142,7 @@ class MyApp extends StatelessWidget {
     );
 
     final commentSection = Container(
-      padding: const EdgeInsets.fromLTRB(15, 25, 15, 15),
+      padding: const EdgeInsets.fromLTRB(0, 25, 15, 0),
       child: Text('已经是第二次来了，在回龙观华联的三楼，电梯上来就能看到，很好找。'
           '上次是在砍价网站上买的，很便宜，这次直接来了，可以团购代金券，'
           '相当于打了九二折，还比较合适。味道相当好，里面有好多配菜，可以不用'
@@ -149,6 +154,27 @@ class MyApp extends StatelessWidget {
           )),
     );
 
+    final suggestion = RichText(
+      textAlign: TextAlign.left,
+      textDirection: TextDirection.ltr,
+      text: TextSpan(
+        text: '推荐: ',
+        style: TextStyle(
+          color: Colors.black87,
+          fontSize: 19,
+        ),
+        children: <TextSpan>[
+          TextSpan(
+              text: '清江鱼',
+              style: TextStyle(
+                color: Colors.blueAccent,
+              ),
+              recognizer: TapGestureRecognizer()..onTap = _suggestionPressed
+          ),
+        ],
+      ),
+    );
+
     return Scaffold(
       backgroundColor: Colors.white.withOpacity(0.98),
       body: CustomScrollView(
@@ -157,20 +183,26 @@ class MyApp extends StatelessWidget {
           SliverList(
             delegate: SliverChildListDelegate(<Widget>[
               Container(
-                padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
-                child: Row(
+                padding: const EdgeInsets.fromLTRB(15, 10, 0, 0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    avar,
-                    nickName,
-                    followButton,
+                    Row(
+                      children: <Widget>[
+                        avar,
+                        nickName,
+                        followButton,
+                      ],
+                    ),
+                    Stack(
+                      children: <Widget>[
+                        stamper,
+                        commentSection,
+                      ],
+                    ),
+                    suggestion,
                   ],
-                ),
-              ),
-              Stack(
-                children: <Widget>[
-                  stamper,
-                  commentSection,
-                ],
+                )
               ),
             ]),
           ),
