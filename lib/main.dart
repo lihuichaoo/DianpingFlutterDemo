@@ -40,7 +40,7 @@ class MyApp extends StatelessWidget {
             padding: EdgeInsets.fromLTRB(0, 0, 10, 0),
             width: 40,
             height: 40,
-            child: Image.asset('assets/more.png'),
+            child: Image.asset('assets/more_menu.png'),
           ),
           onTapUp: _morePressed,
         )
@@ -61,9 +61,9 @@ class MyApp extends StatelessWidget {
         padding: const EdgeInsets.fromLTRB(0, 0, 14, 0),
         child: Stack(
           children: <Widget>[
-            ClipRRect(
-              borderRadius: BorderRadius.circular(24),
-              child: Image.asset('assets/ava2.png'),
+            CircleAvatar(
+              radius: 24,
+              backgroundImage: ExactAssetImage('assets/ava2.png'),
             ),
             Positioned(
               left: 25,
@@ -137,7 +137,7 @@ class MyApp extends StatelessWidget {
       child: Container(
         width: 55,
         height: 55,
-        child: Image.asset('assets/efi.png'),
+        child: Image.asset('assets/stamper.png'),
       ),
     );
 
@@ -184,22 +184,22 @@ class MyApp extends StatelessWidget {
       List<Widget> children = List.generate(5, (int index) {
         if (index < countOfFullStar) {
           if (index == 0) {
-            return Image.asset('assets/fw2.png');
+            return Image.asset('assets/full_star.png');
           } else {
             return Container(
               padding: const EdgeInsets.fromLTRB(2, 0, 0, 0),
-              child: Image.asset('assets/fw2.png'),
+              child: Image.asset('assets/full_star.png'),
             );
           }
         } else if (index == countOfFullStar && halfStar) {
           return Container(
             padding: const EdgeInsets.fromLTRB(2, 0, 0, 0),
-            child: Image.asset('assets/fw1.png'),
+            child: Image.asset('assets/half_star.png'),
           );
         } else {
           return Container(
             padding: const EdgeInsets.fromLTRB(2, 0, 0, 0),
-            child: Image.asset('assets/fw0.png'),
+            child: Image.asset('assets/empty_star.png'),
           );
         }
       });
@@ -233,17 +233,17 @@ class MyApp extends StatelessWidget {
 
     Widget _buildIconText(String title) {
       return Row(
-        mainAxisAlignment: MainAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
           SizedBox(
-            width: 32,
-            height: 32,
-            child: Image.asset('assets/fa.png'),
+            width: 20,
+            height: 20,
+            child: Image.asset('assets/perfect.png'),
           ),
           Text(
             title,
             style: TextStyle(
-              fontSize: 16,
+              fontSize: 14,
               color: Colors.black,
             ),),
         ],
@@ -264,7 +264,7 @@ class MyApp extends StatelessWidget {
         Text(
           '一品焖锅(回龙观店)',
           style: TextStyle(
-            fontSize: 24,
+            fontSize: 20,
             fontWeight: FontWeight.w600,
             color: Colors.black,
           ),
@@ -273,43 +273,42 @@ class MyApp extends StatelessWidget {
           padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
           width: 30,
           height: 30,
-          child: Image.asset('assets/cm3.png'),
+          child: Image.asset('assets/coupon.png'),
         ),
       ],
+    );
+
+    final subTitleStyle = TextStyle(
+      color: Colors.black54,
+      fontSize: 14,
     );
 
     final scoreRow = Row(
       mainAxisAlignment: MainAxisAlignment.start,
       children: <Widget>[
         SizedBox(
-          height: 15,
+          height: 12,
           child: _buildScore(4.5),
         ),
         Padding(
-          padding: const EdgeInsets.fromLTRB(15, 0, 0, 0),
+          padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
           child: Text(
             '￥96/人',
-            style: TextStyle(
-              color: Colors.black26,
-              fontSize: 18,
-            ),
+            style: subTitleStyle,
           ),
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.end,
           children: <Widget>[
             Container(
-              margin: const EdgeInsets.fromLTRB(15, 0, 2, 0),
-              width: 18,
-              height: 18,
-              child: Image.asset('assets/g0n.png'),
+              margin: const EdgeInsets.fromLTRB(10, 0, 2, 0),
+              width: 12,
+              height: 12,
+              child: Image.asset('assets/star.png'),
             ),
             Text(
-              '3429',
-              style: TextStyle(
-                color: Colors.black26,
-                fontSize: 18,
-              ),
+                '3429',
+                style: subTitleStyle
             ),
           ],
         ),
@@ -321,32 +320,24 @@ class MyApp extends StatelessWidget {
         child: Row(
           children: <Widget>[
             Text(
-                '昌平区',
-                style: TextStyle(
-                  color: Colors.black54,
-                  fontSize: 18,
-                )),
+              '昌平区',
+              style: subTitleStyle,
+            ),
             SizedBox(width: 5,),
             Text(
                 '回龙观',
-                style: TextStyle(
-                  color: Colors.black54,
-                  fontSize: 18,
-                )),
+                style: subTitleStyle,
+            ),
             SizedBox(width: 5,),
             Text(
                 '焖锅',
-                style: TextStyle(
-                  color: Colors.black54,
-                  fontSize: 18,
-                )),
+                style: subTitleStyle,
+            ),
             SizedBox(width: 10,),
             Text(
-                '1.1km',
-                style: TextStyle(
-                  color: Colors.black54,
-                  fontSize: 18,
-                )),
+              '1.1km',
+              style: subTitleStyle,
+            ),
           ],
         ));
 
@@ -356,15 +347,13 @@ class MyApp extends StatelessWidget {
         children: <Widget>[
           Container(
             padding: const EdgeInsets.fromLTRB(0, 0, 6, 0),
-            height: 20,
-            child: Image.asset('assets/ceu.png'),
+            height: 18,
+            child: Image.asset('assets/group.png'),
           ),
           Text(
-              '177元 清江鱼焖锅套餐',
-              style: TextStyle(
-                color: Colors.black54,
-                fontSize: 18,
-              )),
+            '177元 清江鱼焖锅套餐',
+            style: subTitleStyle,
+          ),
         ],
       ),
     );
@@ -401,50 +390,41 @@ class MyApp extends StatelessWidget {
     );
 
     Widget _buildCircleAvatar(String path) {
-      return Padding(
-        padding: const EdgeInsets.fromLTRB(15, 0, 0, 0),
-        child: ClipRRect(
-          borderRadius: BorderRadius.circular(24),
-          child: Image.asset(path),
-        ),
+      return CircleAvatar(
+        radius: 20,
+        backgroundImage: ExactAssetImage(path),
       );
     }
 
     final likeSection =  Padding(
-        padding: const EdgeInsets.all(15),
+        padding: const EdgeInsets.all(10),
         child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
             Column(
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
                 Container(
                   margin: const EdgeInsets.fromLTRB(0, 0, 0, 2),
-                  width: 30,
-                  child: Image.asset('assets/dzh.png'),
+                  width: 26,
+                  child: Image.asset('assets/like.png'),
                 ),
                 Text(
-                    '45',
-                    style: TextStyle(
-                      color: Colors.black54,
-                      fontSize: 14,
-                    )),
+                  '45',
+                  style: subTitleStyle,
+                ),
               ],
             ),
             _buildCircleAvatar('assets/ava5.png'),
             _buildCircleAvatar('assets/ava2.png'),
             _buildCircleAvatar('assets/ava3.png'),
             _buildCircleAvatar('assets/ava4.png'),
-            Padding(
-              padding: const EdgeInsets.fromLTRB(15, 0, 0, 0),
-              child: CircleAvatar(
-                radius: 24,
-                backgroundColor: Colors.black12,
-                child: Text(
-                    '更多',
-                    style: TextStyle(
-                      color: Colors.black54,
-                      fontSize: 14,
-                    )),
+            CircleAvatar(
+              radius: 20,
+              backgroundColor: Colors.black12,
+              child: Text(
+                '更多',
+                style: subTitleStyle,
               ),
             ),
           ],
@@ -499,7 +479,7 @@ class MyApp extends StatelessWidget {
                           '浏览 3.5万',
                           style: TextStyle(
                             color: Colors.black54,
-                            fontSize: 20,
+                            fontSize: 16,
                           )),
                     ),
                     SizedBox(width: 0, height: 20,),
@@ -521,10 +501,10 @@ class MyApp extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
-              _buildIconButton('assets/dzh.png'),
-              _buildIconButton('assets/dzg.png'),
-              _buildIconButton('assets/dze.png'),
-              _buildIconButton('assets/dzj.png'),
+              _buildIconButton('assets/like.png'),
+              _buildIconButton('assets/comment.png'),
+              _buildIconButton('assets/dark_star.png'),
+              _buildIconButton('assets/share.png'),
             ],
           ),
         ),
